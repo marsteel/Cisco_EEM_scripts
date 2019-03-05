@@ -1,0 +1,8 @@
+event manager applet Get_SNMP_cipSecGlobalActiveTunnels
+ description applet Get SNMP cipSecGlobalActiveTunnels every 300 seconds and send output to syslog
+ event timer watchdog time 300
+ action 1.0 info type snmp oid 1.3.6.1.4.1.9.9.171.1.3.1.1.0 get-type exact
+ action 2.0 syslog priority notifications msg "YOUR_ROUTERNAME_HERE cipSecGlobalActiveTunnels $_info_snmp_value"
+ 
+!! More Info for oid 1.3.6.1.4.1.9.9.171.1.3.1.1.0
+!! http://www.mibdepot.com/cgi-bin/getmib3.cgi?win=mib_av&i=1&n=CISCO-IPSEC-FLOW-MONITOR-MIB&r=hp&f=ipsec-flow.mi2&v=v2&t=sca&o=cipSecGlobalActiveTunnels

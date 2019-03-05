@@ -1,0 +1,6 @@
+event manager applet Check_Active_DMVPN_Peers
+ description applet to show dmvpn | inc Peers command to check active DMVPN clients every 600 seconds and send output to syslog
+ event timer watchdog time 600
+ action 1.0 cli command "enable"
+ action 2.0 cli command "sh dmvpn | include Peers"
+ action 3.0 syslog priority notifications msg "$_cli_result"
